@@ -346,20 +346,26 @@ services:
       networks:
         - backend
       
-      mariadb_published:
-        build: ./mariadb
-        volumes:
-          - ${DATA_PATH_HOST}/mariadb_published:/var/lib/mysql
-          - ${MARIADB_ENTRYPOINT_INITDB}:/docker-entrypoint-initdb.d
-        ports:
-          - "3307:3306"
-        environment:
-          - MYSQL_DATABASE=${MARIADB_DATABASE_PUBLISHED}
-          - MYSQL_USER=${MARIADB_USER_PUBLISHED}
-          - MYSQL_PASSWORD=${MARIADB_PASSWORD_PUBLISHED}
-          - MYSQL_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD_PUBLISHED}
-        networks:
-          - backend
+    mariadb_published:
+      build:
+        context: ./mariadb
+        args:
+          - http_proxy
+          - https_proxy
+          - no_proxy
+          - MARIADB_VERSION=${MARIADB_VERSION}
+      volumes:
+        - ${DATA_PATH_HOST}/mariadb_published:/var/lib/mysql
+        - ${MARIADB_ENTRYPOINT_INITDB}:/docker-entrypoint-initdb.d
+      ports:
+        - "3307:3306"
+      environment:
+        - MYSQL_DATABASE=${MARIADB_DATABASE_PUBLISHED}
+        - MYSQL_USER=${MARIADB_USER_PUBLISHED}
+        - MYSQL_PASSWORD=${MARIADB_PASSWORD_PUBLISHED}
+        - MYSQL_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD_PUBLISHED}
+      networks:
+        - backend
 
 
 
