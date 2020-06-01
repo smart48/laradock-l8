@@ -381,19 +381,6 @@ services:
       networks:
         - backend
 
-
-### Beanstalkd ###########################################
-    beanstalkd:
-      build: ./beanstalkd
-      ports:
-        - "${BEANSTALKD_HOST_PORT}:11300"
-      privileged: true
-      depends_on:
-        - php-fpm
-      networks:
-        - backend
-
-
 ### MailDev ##############################################
     maildev:
       build: ./maildev
