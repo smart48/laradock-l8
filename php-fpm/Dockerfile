@@ -238,9 +238,9 @@ RUN if [ ${INSTALL_PHPDBG} = true ]; then \
 # Blackfire:
 ###########################################################################
 
-ARG INSTALL_BLACKFIRE=false
+ARG PHP_FPM_INSTALL_BLACKFIRE=false
 
-RUN if [ ${INSTALL_XDEBUG} = false -a ${INSTALL_BLACKFIRE} = true ]; then \
+RUN if [ ${INSTALL_XDEBUG} = false -a ${PHP_FPM_INSTALL_BLACKFIRE=false} = true ]; then \
     version=$(php -r "echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;") \
     && curl -A "Docker" -o /tmp/blackfire-probe.tar.gz -D - -L -s https://blackfire.io/api/v1/releases/probe/php/linux/amd64/$version \
     && tar zxpf /tmp/blackfire-probe.tar.gz -C /tmp \
