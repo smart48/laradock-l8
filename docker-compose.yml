@@ -336,7 +336,7 @@ services:
         - ${DATA_PATH_HOST}/mariadb:/var/lib/mysql
         - ${MARIADB_ENTRYPOINT_INITDB}:/docker-entrypoint-initdb.d
       ports:
-        - "${MARIADB_PORT}:3306"
+        - "3307:3306"
       environment:
         - TZ=${WORKSPACE_TIMEZONE}
         - MYSQL_DATABASE=${MARIADB_DATABASE}
@@ -358,7 +358,7 @@ services:
         - ${DATA_PATH_HOST}/mariadb_published:/var/lib/mysql
         - ${MARIADB_ENTRYPOINT_INITDB}:/docker-entrypoint-initdb.d
       ports:
-        - "3307:3306"
+        - "3308:3306"
       environment:
         - MYSQL_DATABASE=${MARIADB_DATABASE_PUBLISHED}
         - MYSQL_USER=${MARIADB_USER_PUBLISHED}
