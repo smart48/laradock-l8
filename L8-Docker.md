@@ -51,6 +51,13 @@ We may remove the `4433` https port in the future
 
 We run two MariaDB containers on 3307 (base) and 3308 (secondary) locally not to interfere with the Valet database port 3306 (default)
 
-Do use `mariadb/docker-entrypoint-initdb.d/createdb.sql.example` to create the databases needed by renaming the file to `.sql` and adjusting its content
+Do use `mariadb/docker-entrypoint-initdb.d/createdb.sql.example` to create the databases needed by renaming the file to `.sql` and adjusting its content.
+
+```bash
+docker-compose exec mariadb bash
+mysql -u root -p < /docker-entrypoint-initdb.d/createdb.sql
+docker-compose exec mariadb_published bash
+mysql -u root -p < /docker-entrypoint-initdb.d/createdb-published.sql
+```
 
 Locally it is `root` user and password `root`, user `default` and password `secret`. Databases the ones added (default and published in our test case). You can look them up logging in as root with ease.
