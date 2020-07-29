@@ -61,3 +61,21 @@ mysql -u root -p < /docker-entrypoint-initdb.d/createdb-published.sql
 ```
 
 Locally it is `root` user and password `root`, user `default` and password `secret`. Databases the ones added (default and published in our test case). You can look them up logging in as root with ease.
+
+For Laravel .env please use this locally:
+
+```shell
+# DB_CONNECTION=mysql
+DB_HOST=mariadb
+DB_PORT=3306
+DB_DATABASE=default
+DB_USERNAME=default
+DB_PASSWORD=secret
+
+# DB_CONNECTION=mysql
+DB_PUBLISH_HOST=mariadb
+DB_PUBLISH_PORT=3306
+DB_PUBLISH_DATABASE=published
+DB_PUBLISH_USERNAME=default
+DB_PUBLISH_PASSWORD=secret
+```
